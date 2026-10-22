@@ -8,14 +8,14 @@ This folder contains my learning exercises and implementations associated with t
 
 ## Learning scope
 
-| Area | What I'm exploring |
-| --- | --- |
-| LLM fundamentals | Model calls, prompts, responses, and application integration |
-| LangChain | Reusable components and orchestration of LLM-powered workflows |
-| RAG | Document ingestion, chunking, embeddings, retrieval, and grounded responses |
-| Vector search | Embedding-based similarity search and vector storage |
-| Agents and tools | Tool invocation, reasoning/action loops, and multi-step tasks |
-| Evaluation | Answer quality, hallucinations, faithfulness, cost, and latency |
+| Area             | What I'm exploring                                                          |
+| ---------------- | --------------------------------------------------------------------------- |
+| LLM fundamentals | Model calls, prompts, responses, and application integration                |
+| LangChain        | Reusable components and orchestration of LLM-powered workflows              |
+| RAG              | Document ingestion, chunking, embeddings, retrieval, and grounded responses |
+| Vector search    | Embedding-based similarity search and vector storage                        |
+| Agents and tools | Tool invocation, reasoning/action loops, and multi-step tasks               |
+| Evaluation       | Answer quality, hallucinations, faithfulness, cost, and latency             |
 
 Some topics may be extended beyond the original course as independent practice.
 
@@ -46,57 +46,70 @@ Code and notebooks can be grouped by topic or application when useful. This READ
 
 ## Getting started
 
-From the local GitHub workspace, create and activate a Python virtual environment:
+Navigate to the course folder:
 
 ```bash
 cd ~/Desktop/my-workspace/github/labs-agentic-ai/codebasics-agentic-ai-langchain
-python3 -m venv .venv
-source .venv/bin/activate
 ```
 
-### Install dependencies using `uv`
+### Install `uv`
 
-With `.venv` activated, check whether [`uv`](https://docs.astral.sh/uv/) is installed:
+Check that [`uv`](https://docs.astral.sh/uv/) is installed:
 
 ```bash
 uv --version
 ```
 
-If it is not installed, follow the [official uv installation instructions](https://docs.astral.sh/uv/getting-started/installation/) and reopen the terminal if needed. Then reactivate `.venv`.
+If it is missing, follow the [official installation instructions](https://docs.astral.sh/uv/getting-started/installation/).
 
-Use `uv pip` to install dependencies into the **active virtual environment**:
+### Recommended: synchronize a `uv` project
 
-```bash
-# If the current exercise has a requirements.txt file
-uv pip install -r requirements.txt
-
-# Or install individual packages when needed (example)
-uv pip install langchain langchain-community python-dotenv
-```
-
-Run only the command relevant to the exercise; the package list above is illustrative, not a verified list of course dependencies. If a requirements file lives inside a specific project subfolder, change into that folder or pass its relative path instead.
-
-To verify which Python environment is active:
+If this directory contains a `pyproject.toml`, use **`uv sync`** to create or update the project environment and install the declared dependencies:
 
 ```bash
+uv sync
+source .venv/bin/activate
+
+# Verify the environment
 which python
 python --version
 uv pip list
 ```
 
-`which python` should point to the `.venv/bin/python` inside this course folder. With an activated environment, `uv pip install` targets that environment; it is a faster alternative to `pip install`.
+`uv sync` also respects the project's `uv.lock` file when present, helping reproduce dependency versions. **Activation is optional for `uv sync`**: the command manages the project's `.venv` itself. If you prefer to activate the environment first, this works too:
 
-> **Important:** `uv pip install` is the appropriate command here for an already activated virtual environment. `uv run` is a separate workflow that can manage or select a project environment, so it is not necessary for these steps.
+```bash
+source .venv/bin/activate
+uv sync
+```
+
+To add a new dependency to a `uv` project, use `uv add <package-name>` rather than only `uv pip install`, so the project metadata and lockfile stay in sync.
+
+### Alternative: requirements-based exercises
+
+If an exercise has `requirements.txt` but **no `pyproject.toml`**, use a virtual environment with `uv pip` instead:
+
+```bash
+uv venv .venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
+```
+
+You can also install individual packages with `uv pip install <package-name>`. This is a separate workflow from `uv sync` and does not update `pyproject.toml`.
+
+### Running exercises and handling credentials
+
+Run the relevant script or notebook according to the instructions in its own directory. In a `uv` project, `uv run <script.py>` is another option that uses the synchronized project environment without requiring manual activation.
 
 Configure provider API keys through environment variables or a local, ignored `.env` file; **never commit credentials**.
 
-To leave the virtual environment:
+To leave an activated virtual environment:
 
 ```bash
 deactivate
 ```
 
-> No universal application run command is listed because notebooks and applications may have different entry points. Follow the instructions documented with each implementation.
+> There is no universal launch command for this course: individual notebooks and applications may have different entry points. The `uv sync` workflow requires a `pyproject.toml` in the project directory; if each example has its own `pyproject.toml`, run it from that example's directory.
 
 ## Progress and documentation
 
