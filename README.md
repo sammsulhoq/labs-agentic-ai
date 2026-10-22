@@ -1,73 +1,66 @@
 # Agentic AI Labs
 
-Hands-on explorations of **generative AI, retrieval-augmented generation (RAG), AI agents, and agentic workflows** using Python and modern AI development frameworks.
+> A growing collection of hands-on implementations, course exercises, and technical experiments in generative AI and agentic systems.
 
-This repository is a practical engineering workspace: guided course exercises live alongside small experiments and independently built projects. Implementations are organized by purpose so each can evolve without turning the repository into a collection of unrelated root-level files.
+This repository is my practical workspace for exploring **LLM applications, retrieval-augmented generation (RAG), AI agents, and agentic workflows** with Python and related tools. It brings together learning resources and hands-on implementations without presenting tutorial exercises as production-ready products.
 
-> **Status:** An evolving learning and experimentation repository. Examples are not presented as production-ready systems unless explicitly stated.
+## Repository structure
 
-## Repository layout
+Each substantial course or learning track lives in a **descriptively named folder directly under the repository root**. Individual folders own their code, dependencies, setup instructions, and README. There is no mandatory `courses/` wrapper.
 
 ```text
 labs-agentic-ai/
-├── courses/                              # Guided implementations from learning resources
-│   └── codebasics-agentic-ai-langchain/   # Codebasics Agentic AI / LangChain crash course
-│       ├── README.md
-│       ├── fundamentals/                  # Core examples and concepts
-│       ├── shopping-agent/                # Guided shopping-agent project
-│       └── telecom-rag-chatbot/           # Guided telecom support RAG project
-├── projects/                             # Independently designed applications
-├── experiments/                          # Small, focused proofs of concept
-├── .gitignore
+├── codebasics-agentic-ai-langchain/
+│   └── README.md
+├── <future-course-or-project>/
+│   └── README.md
 └── README.md
 ```
 
-Folders are added as work begins; not every directory shown above will exist immediately.
+*The second directory is illustrative, not an existing folder. Subfolders within each project depend on the implementation.*
 
-## How to navigate
+## Learning tracks
 
-| Area | Purpose | What belongs here |
+| Track | Focus | Resource |
 | --- | --- | --- |
-| [`courses/`](courses/) | Follow-along implementations | Exercises, notes, and projects associated with a named course |
-| `projects/` | Independent builds | Applications with their own requirements, architecture, and setup |
-| `experiments/` | Focused technical exploration | Small comparisons, prototypes, or single-concept demonstrations |
+| [Codebasics — Agentic AI & LangChain](./codebasics-agentic-ai-langchain/) | LangChain, RAG, tools, agents, and practical AI applications | [YouTube course](https://www.youtube.com/watch?v=D74el9mvNak) |
 
-Each substantial project should include its own README describing what it does, the tools it uses, setup steps, and any known limitations.
+More tracks will be added as hands-on work progresses.
 
-## Current course
+## How to use this repository
 
-### Codebasics — Agentic AI using LangChain
+1. Open a track from the table above.
+2. Read its own `README.md` for requirements, setup, and run commands.
+3. Work inside that track's folder; examples may use different environments or dependencies.
 
-**Location:** [`courses/codebasics-agentic-ai-langchain/`](courses/codebasics-agentic-ai-langchain/)
-
-**Video:** [Agentic AI crash course on YouTube](https://www.youtube.com/watch?v=D74el9mvNak)
-
-Topics and tools described for the course include LangChain, generative AI foundations, agentic workflows, RAG, ChromaDB, Streamlit, SQLite, Hugging Face, sentence transformers, and LLM integrations. The guided projects are a **shopping agent** and a **telecom RAG chatbot**.
-
-See the [course README](courses/codebasics-agentic-ai-langchain/README.md) for its working layout and progress checklist.
-
-## Running an example
-
-Examples may have different dependencies, API providers, and launch commands. Start with the README in the relevant course or project folder rather than assuming a single setup command works for the entire repository.
-
-For Python examples, a typical local environment is:
+For a Python-based example, a common starting point is:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-# Install dependencies using the requirements file for the specific example.
 ```
 
-Never commit API keys, credentials, local databases containing personal data, or `.env` files. Provide `.env.example` files with variable names only when configuration is needed.
+Install dependencies only from the relevant project's documented requirements. There is no repository-wide installation command.
 
-## Engineering approach
+## Organization principles
 
-- Keep examples small, readable, and reproducible.
-- Separate tutorial-derived implementations from independently designed projects.
-- Document dependencies, assumptions, limitations, and attribution.
-- Prefer focused commits that reflect meaningful progress.
-- Add tests and deployment instructions when an example warrants them.
+- **Root-level folders identify a course, project, or coherent learning track.**
+- **Each track is self-contained:** code, supporting assets, and documentation stay together.
+- **Keep attribution clear:** link to original courses and distinguish guided exercises from independent extensions.
+- **Document actual behavior:** include run commands and environment variables when implementations are available.
+- **Protect secrets:** never commit API keys, `.env` files, tokens, credentials, or private datasets.
+- **Keep experiments honest:** examples are for learning unless explicitly documented and tested for production use.
+
+## Topics explored
+
+Python · Generative AI · LangChain · LangGraph · RAG · Vector Databases · LLM Integrations · Tool Calling · Agentic Workflows · Evaluation
+
+These are areas of interest across the repository, not a claim that every topic has already been implemented.
 
 ## Attribution
 
-Course exercises are inspired by the respective authors and linked to their original learning materials. This repository contains personal practice and adaptations; it is not an official Codebasics repository.
+Third-party courses and learning resources remain the work of their respective creators. Exercises here are personal implementations or adaptations, not official course repositories.
+
+## Author
+
+[Sammsul Hoque Choudhary](https://github.com/sammsulhoq)
