@@ -46,7 +46,7 @@ Code and notebooks can be grouped by topic or application when useful. This READ
 
 ## Getting started
 
-From the local GitHub workspace:
+From the local GitHub workspace, create and activate a Python virtual environment:
 
 ```bash
 cd ~/Desktop/my-workspace/github/labs-agentic-ai/codebasics-agentic-ai-langchain
@@ -54,7 +54,41 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Install dependencies based on the specific exercise or its requirements file, if present. Configure provider API keys through environment variables or a local, ignored `.env` file; **never commit credentials**.
+### Install dependencies using `uv`
+
+With `.venv` activated, check whether [`uv`](https://docs.astral.sh/uv/) is installed:
+
+```bash
+uv --version
+```
+
+If it is not installed, follow the [official uv installation instructions](https://docs.astral.sh/uv/getting-started/installation/) and reopen the terminal if needed. Then reactivate `.venv`.
+
+Use `uv pip` to install dependencies into the **active virtual environment**:
+
+```bash
+# If the current exercise has a requirements.txt file
+uv pip install -r requirements.txt
+
+# Or install individual packages when needed (example)
+uv pip install langchain langchain-community python-dotenv
+```
+
+Run only the command relevant to the exercise; the package list above is illustrative, not a verified list of course dependencies. If a requirements file lives inside a specific project subfolder, change into that folder or pass its relative path instead.
+
+To verify which Python environment is active:
+
+```bash
+which python
+python --version
+uv pip list
+```
+
+`which python` should point to the `.venv/bin/python` inside this course folder. With an activated environment, `uv pip install` targets that environment; it is a faster alternative to `pip install`.
+
+> **Important:** `uv pip install` is the appropriate command here for an already activated virtual environment. `uv run` is a separate workflow that can manage or select a project environment, so it is not necessary for these steps.
+
+Configure provider API keys through environment variables or a local, ignored `.env` file; **never commit credentials**.
 
 To leave the virtual environment:
 
@@ -62,7 +96,7 @@ To leave the virtual environment:
 deactivate
 ```
 
-> No universal run command is listed because notebooks and applications may have different entry points. Follow the instructions documented with each implementation.
+> No universal application run command is listed because notebooks and applications may have different entry points. Follow the instructions documented with each implementation.
 
 ## Progress and documentation
 
